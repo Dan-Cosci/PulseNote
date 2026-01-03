@@ -29,3 +29,7 @@ dump/
 
 tmp/
 temp/
+
+test/
+
+medicine.json
