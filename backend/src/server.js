@@ -7,15 +7,17 @@ import env from "./config/config.js";
 import genAi from "./services/services.gemini.js";
 
 // database
+import mongoose from "mongoose";
 import connectDB from "./config/db.js";
 import "./models/Users.js";
-import "./models/PatientNotes.js";
 import "./models/Medication.js"
+import "./models/IntakeLog.js";
+import "./models/PatientNotes.js";
+import "./models/condition.js";
 
 
 // express app
 const app = express();
-
 
 // middlewares
 app.use(morgan("dev"));
@@ -24,7 +26,10 @@ app.use(hpp());
 app.use(helmet());
 
 // routes
-import testRoutes from "./test/test.routes.js"; app.use("/test", testRoutes);
+import testRoutes from "./test/test.routes.js";
+import mainRouter from "./routes/main.routes.js";
+app.use("/test", testRoutes);
+app.use("/api/pulsenote/v1", mainRouter)
 
 // foe route
 app.get("/", async (req, res) => {
@@ -38,7 +43,9 @@ app.get("/", async (req, res) => {
 // listens on port
 connectDB().then(() => {
   app.listen(env.PORT, () => {
-    console.log(`Server is running on port ${env.PORT}`);
+    console.log(`server running on http://localhost:${env.PORT}`)
+    console.log("loaded models:")
+    mongoose.modelNames().map((model) => console.log(`- ${model}`))
   });
 });
 

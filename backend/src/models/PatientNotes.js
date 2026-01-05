@@ -23,5 +23,4 @@ const patientNotesSchema = new Schema({
 });
 
 const patientNotes = mongoose.model("PatientNotes", patientNotesSchema);
-console.log(patientNotes);
 export default patientNotes;
