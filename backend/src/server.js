@@ -15,7 +15,6 @@ import "./models/IntakeLog.js";
 import "./models/PatientNotes.js";
 import "./models/condition.js";
 
-
 // express app
 const app = express();
 
@@ -24,6 +23,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(hpp());
 app.use(helmet());
+app.use(express.urlencoded({ extended: true }));
 
 // routes
 import testRoutes from "./test/test.routes.js";
