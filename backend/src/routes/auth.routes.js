@@ -1,9 +1,11 @@
 import { Router } from "express";
 
+import * as authCon from "../controllers/auth.controller.js";
+
 const authRouter = Router();
 
 // main functionality
-authRouter.post("/login", (req, res)=>{});
+authRouter.post("/login", authCon.Login);
 authRouter.post("/register", (req, res)=>{});
 authRouter.post("/logout", (req, res)=>{});
 

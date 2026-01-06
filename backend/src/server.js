@@ -15,6 +15,11 @@ import "./models/IntakeLog.js";
 import "./models/PatientNotes.js";
 import "./models/condition.js";
 
+// custom middlewares
+import errorHandler from "./middlewares/errorHandler.middleware.js";
+import asyncHandler from "./middlewares/asyncHandler.middleware.js";
+
+
 // express app
 const app = express();
 
@@ -24,6 +29,9 @@ app.use(express.json());
 app.use(hpp());
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(errorHandler)
+app.use(asyncHandler)
 
 // routes
 import testRoutes from "./test/test.routes.js";
