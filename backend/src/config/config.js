@@ -8,6 +8,7 @@ const env = {
   MONGO_PASSWORD: process.env.MONGO_PASSWORD,
   PORT: process.env.PORT || 6969,
   GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+  JWT_SECRET: process.env.JWT_SECRET,
 }
 
 export default env;
