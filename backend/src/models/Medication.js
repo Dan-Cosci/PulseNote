@@ -24,5 +24,5 @@ const medicationSchema = new Schema({
   deletedAt: { type: Date, default: null }
 });
 
-const medication = mongoose.model("medication", medicationSchema);
-export default medication;
+const Medication = mongoose.model("medication", medicationSchema);
+export default Medication;

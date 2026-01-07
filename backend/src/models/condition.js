@@ -37,5 +37,5 @@ const conditionSchema = new Schema({
 
 });
 
-const condition = mongoose.model("condition", conditionSchema);
-export default condition;
+const Condition = mongoose.model("condition", conditionSchema);
+export default Condition;

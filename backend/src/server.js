@@ -31,7 +31,6 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(errorHandler)
-app.use(asyncHandler)
 
 // routes
 import testRoutes from "./test/test.routes.js";

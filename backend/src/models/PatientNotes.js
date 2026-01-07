@@ -22,5 +22,5 @@ const patientNotesSchema = new Schema({
   deletedAt: { type: Date, default: null }
 });
 
-const patientNotes = mongoose.model("PatientNotes", patientNotesSchema);
-export default patientNotes;
+const PatientNotes = mongoose.model("PatientNotes", patientNotesSchema);
+export default PatientNotes;

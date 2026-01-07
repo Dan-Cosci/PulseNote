@@ -6,7 +6,7 @@ const authRouter = Router();
 
 // main functionality
 authRouter.post("/login", authCon.Login);
-authRouter.post("/register", (req, res)=>{});
+authRouter.post("/register", authCon.Register);
 authRouter.post("/logout", (req, res)=>{});
 
 // additional 

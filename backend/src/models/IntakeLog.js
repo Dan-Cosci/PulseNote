@@ -17,5 +17,5 @@ const intakeLogSchema = new Schema({
   }
 });
 
-const intakeLog = mongoose.model("intakeLog", intakeLogSchema);
-export default intakeLog;
+const IntakeLog = mongoose.model("intakeLog", intakeLogSchema);
+export default IntakeLog;
