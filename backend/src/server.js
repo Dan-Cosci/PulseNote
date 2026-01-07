@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import hpp from "hpp";
+import coockieParser from "cookie-parser";
 import helmet from "helmet";
 
 import env from "./config/config.js";
@@ -17,7 +18,6 @@ import "./models/condition.js";
 
 // custom middlewares
 import errorHandler from "./middlewares/errorHandler.middleware.js";
-import asyncHandler from "./middlewares/asyncHandler.middleware.js";
 
 
 // express app
@@ -26,9 +26,10 @@ const app = express();
 // middlewares
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(coockieParser())
 app.use(hpp());
 app.use(helmet());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(errorHandler)
 

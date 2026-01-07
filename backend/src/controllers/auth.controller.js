@@ -23,6 +23,13 @@ export const Login = asyncHandler(async (req, res) => {
   }
 
   const token = jwt.sign({id:u._id}, env.JWT_SECRET, {expiresIn: env.JWT_EXPIRES_IN})
+  const refreshToken = jwt.sign({id:u._id}, env.JWT_REFRESH_SECRET, {expiresIn: env.JWT_REFRESH_EXPIRES_IN})
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    path:"/api/pulsenote/v1/auth/refresh-token"
+  });
   return res.status(200).json({ success: true, message: "Login successful", token:token });
 
 });
@@ -60,4 +67,29 @@ export const Register = async (req, res) => {
 
 }
 
-export const Logout = async (req, res) => {}
+export const Logout = asyncHandler(async (req, res) => {
+  res.cookie("refreshToken", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    path:"/api/pulsenote/v1/auth/refresh-token"
+  });
+  return res.status(200).json({ success: true, message: "Logout successful" });
+});
+
+export const RefreshToken = asyncHandler(async (req, res) => {
+  const { refreshToken } = req.cookies;
+  if (!refreshToken){
+    throw new AppError("Refresh Token not found", 404);
+  }
+
+  const decoded = jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
+  const user = await User.findById(decoded.id);
+  if(!user){
+    throw new AppError("User not found", 404);
+  }
+
+  const token = jwt.sign({id:user._id}, env.JWT_SECRET, {expiresIn: env.JWT_EXPIRES_IN})
+  return res.status(200).json({ success: true, message: "Token refreshed successfully", token:token });
+
+});
