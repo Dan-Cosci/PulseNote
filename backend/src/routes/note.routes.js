@@ -1,13 +1,17 @@
 import { Router } from "express";
 
+import * as noteCon from "../controllers/note.controller.js";
+
 const NotesRouter = Router();
 
-NotesRouter.get("/", (req, res)=>{});
-NotesRouter.get("/:id", (req, res)=>{});
+NotesRouter.get("/", noteCon.getAllNotes);
+NotesRouter.get("/search", noteCon.searchNote);
+NotesRouter.get("/search/:id", noteCon.searchUserNote);
+NotesRouter.get("/:id", noteCon.getAllUserNotes);
 
-NotesRouter.post("/create", (req, res)=>{});
-NotesRouter.put("/:id", (req, res)=>{});
-NotesRouter.patch("/:id", (req, res)=>{});
+NotesRouter.post("/create", noteCon.createNote);
+NotesRouter.put("/:id", noteCon.updateNote);
+NotesRouter.patch("/:id", noteCon.alterNote);
 
 NotesRouter.delete("/:id", (req, res)=>{});
 
