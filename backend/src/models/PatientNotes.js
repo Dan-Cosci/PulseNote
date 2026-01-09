@@ -7,6 +7,10 @@ const patientNotesSchema = new Schema({
     ref: "User",
     required: true
   },
+  title: {
+    type: String,
+    required: true,
+  },
   content: {
     type: String,
     required: true,
@@ -14,7 +18,7 @@ const patientNotesSchema = new Schema({
   visibility: {
     type: String,
     enum: ["public", "private"],
-    default: "public",
+    default: "private",
     required: true,
   },
   createdAt: { type: Date, default: Date.now },

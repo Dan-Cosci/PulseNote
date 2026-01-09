@@ -30,7 +30,12 @@ export const Login = asyncHandler(async (req, res) => {
     sameSite: "strict",
     path:"/api/pulsenote/v1/auth/refresh-token"
   });
-  return res.status(200).json({ success: true, message: "Login successful", token:token });
+  return res.status(200).json({ 
+    success: true, 
+    message: "Login successful", 
+    token:token,
+    data:u._id 
+  });
 
 });
 
