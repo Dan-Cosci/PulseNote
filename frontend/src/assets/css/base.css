@@ -1,0 +1,12 @@
+body{
+  background: var(--white);
+  color: var(--grey-700);
+
+  --clr-primary: var();
+  --clr-primary-hover: var();
+
+  --clr-secondary: var();
+  --clr-secondary-hover: var();
+
+  
+}
