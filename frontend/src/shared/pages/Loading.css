@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: rgb(0, 0, 0, 0.02);
 
   & .spinner {
     margin-bottom: 2rem;

@@ -4,8 +4,10 @@ import Page404 from './shared/pages/Page404'
 
 const App = () => {
   return (
-    <Page404 />
-
+    <>
+      <Loading />
+      <Page404 />
+    </>
   )
 }
 

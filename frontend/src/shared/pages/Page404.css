@@ -1,4 +1,18 @@
 .page404{
-  background: #f8f8f8;
-  /* TODO: */
+  background:var(--clr-white);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page404 h1{
+  font-size: var(--font-size-xxl);
+  color: var(--clr-primary);
+}
+
+.page404 p{
+  font-size: var(--font-size-md);
 }
